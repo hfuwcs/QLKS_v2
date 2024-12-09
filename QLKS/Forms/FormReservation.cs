@@ -3,6 +3,9 @@ using QLKS.Models;
 using QLKS.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -58,6 +61,33 @@ namespace QLKS
                 dtpStart.Value = ArrivedDateLoad.Date;
                 dtpEnd.Value = ExpectedDateLoad.Date;
             }
+            List<string> danhSachPhongTrong = new List<string>();
+            if (dtpStart.Value!=DateTime.MinValue&&dtpEnd.Value!=DateTime.MinValue)
+            {                
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("DS_PHONGTRONG", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Thêm tham số vào StoredProcedure
+                        cmd.Parameters.AddWithValue("@NGAYDEN", dtpStart.Value);
+                        cmd.Parameters.AddWithValue("@NGAYDI", dtpEnd.Value);
+                        conn.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                // Lấy giá trị từ cột SOPHONG (kiểu chuỗi)
+                                string soPhong = reader.GetString(0); // Cột 0 là SOPHONG
+                                danhSachPhongTrong.Add(soPhong);
+                            }
+                        }
+                    }
+                }
+            }    
+            
+
             DeleteListView(lsvRoomEmpty, lsvRoomBooked);
             List<string> roomBooked = new List<string>();
             List<string> roomEmpty = new List<string>();
@@ -139,46 +169,20 @@ namespace QLKS
         //}
         string CheckRoomStatus(int roomId, DateTime dayStart, DateTime dayEnd)
         {
-            List<BookingRoom> bookings = db.GetTable<BookingRoom>(p => !(p.ExpectedDate <= dayStart.Date || p.ArrivedDate >= dayEnd.Date)).ToList();
-            foreach (BookingRoom booking in bookings)
+            string Status = String.Empty;
+            string sqlQuery = "SELECT dbo.KT_TINHTRANGPHONG(@RoomId, @DayStart,@DayEnd)";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                Invoice invoice = db.GetTable<Invoice>(p => p.BookingRoom == booking.Id).FirstOrDefault();
-                if (invoice != null)
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
                 {
-                    foreach (BookingRoomDetail room in db.GetTable<BookingRoomDetail>(p => p.BookingRoom == booking.Id))
-                    {
-                        if (roomId == room.Room)
-                        {
-                            return "Phòng trống";
-                        }
-                    }
-                }
-                else
-                {
-                    ReceivingRoom receiving = db.GetTable<ReceivingRoom>(p => p.BookingRoom == booking.Id).FirstOrDefault();
-                    if (receiving != null)
-                    {
-                        foreach (BookingRoomDetail room in db.GetTable<BookingRoomDetail>(p => p.BookingRoom == booking.Id))
-                        {
-                            if (roomId == room.Room)
-                            {
-                                return "Đã nhận";
-                            }
-                        }
-                    }
-                    else
-                    {
-                        foreach (BookingRoomDetail room in db.GetTable<BookingRoomDetail>(p => p.BookingRoom == booking.Id))
-                        {
-                            if (roomId == room.Room)
-                            {
-                                return "Đã đặt";
-                            }
-                        }
-                    }
+                    cmd.Parameters.AddWithValue("@RoomId", roomId);
+                    cmd.Parameters.AddWithValue("@DayStart", dayStart);
+                    cmd.Parameters.AddWithValue("@DayEnd", dayEnd);
+                    Status = (string)cmd.ExecuteScalar();
                 }
             }
-            return "Phòng trống";
+            return Status;
         }
         private void button6_Click(object sender, EventArgs e)
         {
@@ -214,7 +218,25 @@ namespace QLKS
 
         private void btnSearchCustomer_Click(object sender, EventArgs e)
         {
-            Customer customer = db.GetTable<Customer>(t => t.UniqueNumber == txtCustomerId.Text).FirstOrDefault();
+            int makh=0;
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("TIM_KHACHHANG_MADD", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Thêm tham số vào StoredProcedure
+                    cmd.Parameters.AddWithValue("@MADD", txtCustomerId.Text);
+                    conn.Open();
+                    makh=Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            if(makh==0)
+            {
+                MessageBox.Show("Không tìm thấy khách hàng này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }    
+            Customer customer = db.GetTable<Customer>(t => t.Id==makh).FirstOrDefault();
             if (customer == null)
             {
                 MessageBox.Show("Không tìm thấy khách hàng này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -399,7 +421,33 @@ namespace QLKS
                 return;
             }
             booking.Customer = customer.Id;
-            BookingRoom bookingRoom = db.AddRow<BookingRoom>(booking);
+
+            BookingRoom bookingRoom = new BookingRoom();
+
+            //BookingRoom bookingRoom=db.AddRow<BookingRoom>(booking);
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("THEMPHIEUDATPHONG", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Thêm tham số vào StoredProcedure
+                    cmd.Parameters.AddWithValue("@NGAYDEN", booking.ArrivedDate);
+                    cmd.Parameters.AddWithValue("@NGAYTRADUKIEN", booking.ExpectedDate);
+                    cmd.Parameters.AddWithValue("@MANV", booking.Employee);
+                    cmd.Parameters.AddWithValue("@MAKH", booking.Customer);
+                    conn.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            // Đọc dữ liệu từ SqlDataReader và tạo đối tượng
+                            bookingRoom.Id = reader.GetInt32(reader.GetOrdinal("MAPHIEUDAT"));                            
+                        }
+                    }
+                }
+            }
+
             if (bookingRoom == null)
             {
                 MessageBox.Show("Thêm phiếu đặt phòng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -418,7 +466,28 @@ namespace QLKS
                 room1.Status = "Đã đặt";
                 roomDetail.Room = room1.Id;
                 db.UpdateRow<Room>(room1);
-                db.AddRow<BookingRoomDetail>(roomDetail);
+                int kq = 0;
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("THEMCHITIETPD", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Thêm tham số vào StoredProcedure
+                        cmd.Parameters.AddWithValue("@MAPHIEUDAT", bookingRoom.Id);
+                        cmd.Parameters.AddWithValue("@MAPHONG", room1.Id);
+                        cmd.Parameters.AddWithValue("@NGAYDEN", dtpStart.Value);
+                        cmd.Parameters.AddWithValue("@NGAYDI", dtpEnd.Value);
+                        conn.Open();
+                        kq=cmd.ExecuteNonQuery();
+                    }
+                }
+                if (kq == 0)
+                {
+                    MessageBox.Show($"Phòng {room} không hợp lệ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                //db.AddRow<BookingRoomDetail>(roomDetail);
             }
             if (label1.Text == "PHIẾU NHẬN PHÒNG")
             {
@@ -440,7 +509,26 @@ namespace QLKS
                 receiving.BookingRoom = bookingRoom.Id;
                 receiving.ReceivingDate = dtpStart.Value.Date;
                 receiving.Employee = FormLogin.account.Employee;
-                db.AddRow<ReceivingRoom>(receiving);
+                int kq = 0;
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("THEMPHIEUNHANPHONG", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Thêm tham số vào StoredProcedure
+                        cmd.Parameters.AddWithValue("@MAPHIEUDAT", receiving.BookingRoom);
+                        cmd.Parameters.AddWithValue("@MANV", receiving.Employee);
+                        conn.Open();
+                        kq = cmd.ExecuteNonQuery();
+                    }
+                }
+                if (kq == 0)
+                {
+                    MessageBox.Show($"Thêm phiếu nhận phòng không thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                //db.AddRow<ReceivingRoom>(receiving);
                 MessageBox.Show("Nhận phòng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }

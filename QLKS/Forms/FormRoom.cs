@@ -2,9 +2,13 @@
 using QLKS.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace QLKS.Forms
 {
@@ -80,7 +84,17 @@ namespace QLKS.Forms
             {
                 list.Add(view);
             }
-            dtgvRoom.DataSource = list;
+            dtgvRoom.DataSource = null;
+            string sql = "SELECT *FROM DS_PHONG";
+            DataTable dataTable = new DataTable();
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(sql,conn);
+               
+                dataAdapter.Fill(dataTable);
+            }
+            dtgvRoom.DataSource = dataTable;
+            dtgvRoom.DataSource= list;
         }
         void LoadRoomId()
         {
@@ -143,7 +157,17 @@ namespace QLKS.Forms
             room.Name = txtNumber.Text;
             room.Status = cboStatus.Text;
             room.RoomType = int.Parse(cboTypeId.Text);
-            if (db.AddRow(room) == null)
+            string sql = "INSERT INTO PHONG VALUES('" + room.Name + "',N'" + room.Status + "'," + room.RoomType + ") SELECT SCOPE_IDENTITY();";
+            int kq = 0;
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    conn.Open();
+                    kq= Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            if (kq == 0)
             {
                 MessageBox.Show("Thêm phòng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -196,20 +220,25 @@ namespace QLKS.Forms
 
         private void cboRoomId_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RoomViewModel room = new RoomViewModel();
-            foreach (RoomViewModel roomView in RoomViewModel.GetRooms(db))
+            if (!string.IsNullOrEmpty(cboRoomId.Text))
             {
-                if (roomView.Id == int.Parse(cboRoomId.Text))
+                RoomViewModel room = new RoomViewModel();
+                foreach (RoomViewModel roomView in RoomViewModel.GetRooms(db))
                 {
-                    room = roomView; break;
+
+                    if (roomView.Id == int.Parse(cboRoomId.Text))
+                    {
+                        room = roomView; break;
+                    }
                 }
+
+                txtNumber.Text = room.Number;
+                cboStatus.Text = room.Status;
+                cboTypeId.Text = room.TypeId.ToString();
+                txtTypeName.Text = room.Type;
+                txtMaxPeople.Text = room.MaxPeople.ToString();
+                txtPrice.Text = room.Price.ToString();
             }
-            txtNumber.Text = room.Number;
-            cboStatus.Text = room.Status;
-            cboTypeId.Text = room.TypeId.ToString();
-            txtTypeName.Text = room.Type;
-            txtMaxPeople.Text = room.MaxPeople.ToString();
-            txtPrice.Text = room.Price.ToString();
         }
         void ClearControl(Control control)
         {

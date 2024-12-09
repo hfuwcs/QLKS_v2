@@ -2,7 +2,9 @@
 using QLKS.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -212,21 +214,35 @@ namespace QLKS.Forms
                                 {
                                     foreach (Control control2 in tabControl.TabPages[0].Controls)
                                     {
-                                        if (control2.Name == "label1")
+                                        if (control2.Name== "tableLayoutPanel1")
                                         {
-                                            Label label1 = (Label)control2;
-                                            label1.Text = "PHIẾU NHẬN PHÒNG";
-                                        }
-                                        if (control2.Name == "groupBox6")
-                                        {
-                                            foreach (Control control3 in control2.Controls)
+                                            foreach(Control control3 in control2.Controls)
                                             {
-                                                if (control3.Name == "btnBooking")
+                                                if (control3.Name == "label1")
                                                 {
-                                                    control3.Text = "Nhận phòng";
+                                                    Label label1 = (Label)control3;
+                                                    label1.Text = "PHIẾU NHẬN PHÒNG";
                                                 }
-                                            }
-                                        }
+                                                if (control3.Name == "groupBox6")
+                                                {
+                                                    foreach (Control control4 in control3.Controls)
+                                                    {
+                                                        if (control4.Name == "tableLayoutPanel4")
+                                                        {
+                                                            foreach (Control control5 in control4.Controls)
+                                                            {
+                                                                if (control5.Name == "btnBooking")
+                                                                {
+                                                                    control5.Text = "Nhận phòng";
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+
+                                                }
+                                            }                                            
+                                        }                                        
+                                        
                                     }
                                 }
                             }
@@ -263,8 +279,26 @@ namespace QLKS.Forms
                                         ReceivingRoom receivingRoom = new ReceivingRoom();
                                         receivingRoom.ReceivingDate = DateTime.Now;
                                         receivingRoom.BookingRoom = booking1.Id;
-                                        receivingRoom.Employee = 1;
-                                        db.AddRow<ReceivingRoom>(receivingRoom);
+                                        receivingRoom.Employee = FormLogin.account.Employee;
+                                        int kq = 0;
+                                        using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+                                        {
+                                            using (SqlCommand cmd = new SqlCommand("THEMPHIEUNHANPHONG", conn))
+                                            {
+                                                cmd.CommandType = CommandType.StoredProcedure;
+
+                                                // Thêm tham số vào StoredProcedure
+                                                cmd.Parameters.AddWithValue("@MAPHIEUDAT", receivingRoom.BookingRoom);
+                                                cmd.Parameters.AddWithValue("@MANV", receivingRoom.Employee);
+                                                conn.Open();
+                                                kq = cmd.ExecuteNonQuery();
+                                            }
+                                        }
+                                        if (kq == 0)
+                                        {
+                                            MessageBox.Show($"Thêm phiếu nhận phòng không thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            return;
+                                        }
                                     }
                                 }
                             }
@@ -320,46 +354,20 @@ namespace QLKS.Forms
         }
         string CheckRoomStatus(int roomId, DateTime dayStart, DateTime dayEnd)
         {
-            List<BookingRoom> bookings = db.GetTable<BookingRoom>(p => !(p.ExpectedDate <= dayStart.Date || p.ArrivedDate >= dayEnd.Date)).ToList();
-            foreach (BookingRoom booking in bookings)
+            string Status = String.Empty;
+            string sqlQuery = "SELECT dbo.KT_TINHTRANGPHONG(@RoomId, @DayStart,@DayEnd)";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                Invoice invoice = db.GetTable<Invoice>(p => p.BookingRoom == booking.Id).FirstOrDefault();
-                if (invoice != null)
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
                 {
-                    foreach (BookingRoomDetail room in db.GetTable<BookingRoomDetail>(p => p.BookingRoom == booking.Id))
-                    {
-                        if (roomId == room.Room)
-                        {
-                            return "Phòng trống";
-                        }
-                    }
-                }
-                else
-                {
-                    ReceivingRoom receiving = db.GetTable<ReceivingRoom>(p => p.BookingRoom == booking.Id).FirstOrDefault();
-                    if (receiving != null)
-                    {
-                        foreach (BookingRoomDetail room in db.GetTable<BookingRoomDetail>(p => p.BookingRoom == booking.Id))
-                        {
-                            if (roomId == room.Room)
-                            {
-                                return "Đã nhận";
-                            }
-                        }
-                    }
-                    else
-                    {
-                        foreach (BookingRoomDetail room in db.GetTable<BookingRoomDetail>(p => p.BookingRoom == booking.Id))
-                        {
-                            if (roomId == room.Room)
-                            {
-                                return "Đã đặt";
-                            }
-                        }
-                    }
+                    cmd.Parameters.AddWithValue("@RoomId", roomId);
+                    cmd.Parameters.AddWithValue("@DayStart", dayStart);
+                    cmd.Parameters.AddWithValue("@DayEnd", dayEnd);
+                    Status=(string)cmd.ExecuteScalar();
                 }
             }
-            return "Phòng trống";
+            return Status;
         }
         //async Task LoadListRoomAsync()
         //{

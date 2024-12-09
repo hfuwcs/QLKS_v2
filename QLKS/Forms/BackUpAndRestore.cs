@@ -49,11 +49,11 @@ namespace QLKS.Forms
                 MessageBox.Show("Vui lòng chọn đường dẫn lưu file back up", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (!txtPassword.Text.HashSHA256().Equals(account.Password))
-            {
-                MessageBox.Show("Sai mật khẩu, không thể sao lưu!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            //if (!txtPassword.Text.HashSHA256().Equals(account.Password))
+            //{
+            //    MessageBox.Show("Sai mật khẩu, không thể sao lưu!", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
             string path = txtPath.Text;
             if (MessageBox.Show("Bạn có chắc chắn muốn sao lưu dữ liệu không?", "Thông báo!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
