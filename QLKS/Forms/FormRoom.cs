@@ -2,6 +2,9 @@
 using QLKS.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
@@ -143,7 +146,17 @@ namespace QLKS.Forms
             room.Name = txtNumber.Text;
             room.Status = cboStatus.Text;
             room.RoomType = int.Parse(cboTypeId.Text);
-            if (db.AddRow(room) == null)
+            string sql = "INSERT INTO PHONG VALUES('" + room.Name + "',N'" + room.Status + "'," + room.RoomType + ") SELECT SCOPE_IDENTITY();";
+            int kq = 0;
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    conn.Open();
+                    kq= Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            if (kq == 0)
             {
                 MessageBox.Show("Thêm phòng không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
