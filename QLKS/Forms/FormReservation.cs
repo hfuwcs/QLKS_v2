@@ -61,6 +61,33 @@ namespace QLKS
                 dtpStart.Value = ArrivedDateLoad.Date;
                 dtpEnd.Value = ExpectedDateLoad.Date;
             }
+            List<string> danhSachPhongTrong = new List<string>();
+            if (dtpStart.Value!=DateTime.MinValue&&dtpEnd.Value!=DateTime.MinValue)
+            {                
+                using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("DS_PHONGTRONG", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Thêm tham số vào StoredProcedure
+                        cmd.Parameters.AddWithValue("@NGAYDEN", dtpStart.Value);
+                        cmd.Parameters.AddWithValue("@NGAYDI", dtpEnd.Value);
+                        conn.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                // Lấy giá trị từ cột SOPHONG (kiểu chuỗi)
+                                string soPhong = reader.GetString(0); // Cột 0 là SOPHONG
+                                danhSachPhongTrong.Add(soPhong);
+                            }
+                        }
+                    }
+                }
+            }    
+            
+
             DeleteListView(lsvRoomEmpty, lsvRoomBooked);
             List<string> roomBooked = new List<string>();
             List<string> roomEmpty = new List<string>();
