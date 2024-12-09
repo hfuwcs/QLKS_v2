@@ -8,6 +8,7 @@ using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace QLKS.Forms
 {
@@ -83,7 +84,17 @@ namespace QLKS.Forms
             {
                 list.Add(view);
             }
-            dtgvRoom.DataSource = list;
+            dtgvRoom.DataSource = null;
+            string sql = "SELECT *FROM DS_PHONG";
+            DataTable dataTable = new DataTable();
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(sql,conn);
+               
+                dataAdapter.Fill(dataTable);
+            }
+            dtgvRoom.DataSource = dataTable;
+            dtgvRoom.DataSource= list;
         }
         void LoadRoomId()
         {

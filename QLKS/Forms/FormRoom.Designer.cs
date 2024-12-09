@@ -59,6 +59,11 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dtgvRoom = new System.Windows.Forms.DataGridView();
+            this.button9 = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,11 +71,6 @@
             this.MaxPeople = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button9 = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -251,7 +251,7 @@
             this.cboTypeId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboTypeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTypeId.FormattingEnabled = true;
-            this.cboTypeId.Location = new System.Drawing.Point(242, 38);
+            this.cboTypeId.Location = new System.Drawing.Point(242, 33);
             this.cboTypeId.Name = "cboTypeId";
             this.cboTypeId.Size = new System.Drawing.Size(223, 33);
             this.cboTypeId.TabIndex = 4;
@@ -287,7 +287,7 @@
             "Phòng trống",
             "Đã đặt",
             "Đã nhận"});
-            this.cboStatus.Location = new System.Drawing.Point(3, 248);
+            this.cboStatus.Location = new System.Drawing.Point(3, 243);
             this.cboStatus.Name = "cboStatus";
             this.cboStatus.Size = new System.Drawing.Size(223, 33);
             this.cboStatus.TabIndex = 4;
@@ -297,7 +297,7 @@
             this.cboRoomId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboRoomId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRoomId.FormattingEnabled = true;
-            this.cboRoomId.Location = new System.Drawing.Point(3, 38);
+            this.cboRoomId.Location = new System.Drawing.Point(3, 33);
             this.cboRoomId.Name = "cboRoomId";
             this.cboRoomId.Size = new System.Drawing.Size(223, 33);
             this.cboRoomId.TabIndex = 6;
@@ -502,71 +502,6 @@
             this.dtgvRoom.TabIndex = 0;
             this.dtgvRoom.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvRoom_CellClick);
             // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Mã phòng";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            this.Id.Width = 149;
-            // 
-            // Number
-            // 
-            this.Number.DataPropertyName = "Number";
-            this.Number.HeaderText = "Số phòng";
-            this.Number.MinimumWidth = 6;
-            this.Number.Name = "Number";
-            this.Number.ReadOnly = true;
-            this.Number.Width = 120;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Trạng thái";
-            this.Status.MinimumWidth = 6;
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            this.Status.Width = 118;
-            // 
-            // Price
-            // 
-            this.Price.DataPropertyName = "Price";
-            this.Price.HeaderText = "Giá phòng";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            this.Price.Width = 124;
-            // 
-            // MaxPeople
-            // 
-            this.MaxPeople.DataPropertyName = "MaxPeople";
-            this.MaxPeople.HeaderText = "Số lượng người";
-            this.MaxPeople.MinimumWidth = 6;
-            this.MaxPeople.Name = "MaxPeople";
-            this.MaxPeople.ReadOnly = true;
-            this.MaxPeople.Width = 166;
-            // 
-            // TypeId
-            // 
-            this.TypeId.DataPropertyName = "TypeId";
-            this.TypeId.HeaderText = "Mã loại phòng";
-            this.TypeId.MinimumWidth = 6;
-            this.TypeId.Name = "TypeId";
-            this.TypeId.ReadOnly = true;
-            this.TypeId.Visible = false;
-            this.TypeId.Width = 189;
-            // 
-            // Type
-            // 
-            this.Type.DataPropertyName = "Type";
-            this.Type.HeaderText = "Tên loại phòng";
-            this.Type.MinimumWidth = 6;
-            this.Type.Name = "Type";
-            this.Type.ReadOnly = true;
-            this.Type.Width = 158;
-            // 
             // button9
             // 
             this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -647,6 +582,71 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(474, 134);
             this.tableLayoutPanel2.TabIndex = 8;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Mã phòng";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 124;
+            // 
+            // Number
+            // 
+            this.Number.DataPropertyName = "Number";
+            this.Number.HeaderText = "Số phòng";
+            this.Number.MinimumWidth = 6;
+            this.Number.Name = "Number";
+            this.Number.ReadOnly = true;
+            this.Number.Width = 120;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Trạng thái";
+            this.Status.MinimumWidth = 6;
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            this.Status.Width = 118;
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "Giá phòng";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            this.Price.Width = 124;
+            // 
+            // MaxPeople
+            // 
+            this.MaxPeople.DataPropertyName = "MaxPeople";
+            this.MaxPeople.HeaderText = "Số lượng người";
+            this.MaxPeople.MinimumWidth = 6;
+            this.MaxPeople.Name = "MaxPeople";
+            this.MaxPeople.ReadOnly = true;
+            this.MaxPeople.Width = 166;
+            // 
+            // TypeId
+            // 
+            this.TypeId.DataPropertyName = "TypeId";
+            this.TypeId.HeaderText = "Mã loại phòng";
+            this.TypeId.MinimumWidth = 6;
+            this.TypeId.Name = "TypeId";
+            this.TypeId.ReadOnly = true;
+            this.TypeId.Visible = false;
+            this.TypeId.Width = 157;
+            // 
+            // Type
+            // 
+            this.Type.DataPropertyName = "Type";
+            this.Type.HeaderText = "Tên loại phòng";
+            this.Type.MinimumWidth = 6;
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            this.Type.Width = 158;
             // 
             // FormRoom
             // 
