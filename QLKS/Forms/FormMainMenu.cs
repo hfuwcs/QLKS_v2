@@ -24,10 +24,23 @@ namespace QLKS
             this.Text = string.Empty;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             this.account = account;
-            if (account.Role == "Tiếp tân")
+            if (string.Equals(account.Role, "Tiếp tân", StringComparison.OrdinalIgnoreCase))
             {
-                button1.Visible = false;
-                btnBackup.Visible = false;
+                foreach(Control control in panel_SideBar.Controls)
+                {
+                    if (control.Name == "button1")
+                    {
+                        Button button = (Button) control;
+                        button.Visible = false;
+                    }   
+                    else if (control.Name == "btnBackup")
+                    {
+                        Button button = (Button)control;
+                        button.Visible = false;
+                    }
+                }    
+                //button1.Visible = false;
+                //btnBackup.Visible = false;
             }
         }
         private Color SelectThemeColor()

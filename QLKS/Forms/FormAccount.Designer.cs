@@ -374,7 +374,7 @@
             this.comboBox3.Items.AddRange(new object[] {
             "Nam",
             "Nữ"});
-            this.comboBox3.Location = new System.Drawing.Point(3, 173);
+            this.comboBox3.Location = new System.Drawing.Point(3, 178);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(222, 33);
             this.comboBox3.TabIndex = 0;
