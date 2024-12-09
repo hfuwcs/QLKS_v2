@@ -209,20 +209,25 @@ namespace QLKS.Forms
 
         private void cboRoomId_SelectedIndexChanged(object sender, EventArgs e)
         {
-            RoomViewModel room = new RoomViewModel();
-            foreach (RoomViewModel roomView in RoomViewModel.GetRooms(db))
+            if (!string.IsNullOrEmpty(cboRoomId.Text))
             {
-                if (roomView.Id == int.Parse(cboRoomId.Text))
+                RoomViewModel room = new RoomViewModel();
+                foreach (RoomViewModel roomView in RoomViewModel.GetRooms(db))
                 {
-                    room = roomView; break;
+
+                    if (roomView.Id == int.Parse(cboRoomId.Text))
+                    {
+                        room = roomView; break;
+                    }
                 }
+
+                txtNumber.Text = room.Number;
+                cboStatus.Text = room.Status;
+                cboTypeId.Text = room.TypeId.ToString();
+                txtTypeName.Text = room.Type;
+                txtMaxPeople.Text = room.MaxPeople.ToString();
+                txtPrice.Text = room.Price.ToString();
             }
-            txtNumber.Text = room.Number;
-            cboStatus.Text = room.Status;
-            cboTypeId.Text = room.TypeId.ToString();
-            txtTypeName.Text = room.Type;
-            txtMaxPeople.Text = room.MaxPeople.ToString();
-            txtPrice.Text = room.Price.ToString();
         }
         void ClearControl(Control control)
         {
