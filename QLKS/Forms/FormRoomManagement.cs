@@ -214,21 +214,35 @@ namespace QLKS.Forms
                                 {
                                     foreach (Control control2 in tabControl.TabPages[0].Controls)
                                     {
-                                        if (control2.Name == "label1")
+                                        if (control2.Name== "tableLayoutPanel1")
                                         {
-                                            Label label1 = (Label)control2;
-                                            label1.Text = "PHIẾU NHẬN PHÒNG";
-                                        }
-                                        if (control2.Name == "groupBox6")
-                                        {
-                                            foreach (Control control3 in control2.Controls)
+                                            foreach(Control control3 in control2.Controls)
                                             {
-                                                if (control3.Name == "btnBooking")
+                                                if (control3.Name == "label1")
                                                 {
-                                                    control3.Text = "Nhận phòng";
+                                                    Label label1 = (Label)control3;
+                                                    label1.Text = "PHIẾU NHẬN PHÒNG";
                                                 }
-                                            }
-                                        }
+                                                if (control3.Name == "groupBox6")
+                                                {
+                                                    foreach (Control control4 in control3.Controls)
+                                                    {
+                                                        if (control4.Name == "tableLayoutPanel4")
+                                                        {
+                                                            foreach (Control control5 in control4.Controls)
+                                                            {
+                                                                if (control5.Name == "btnBooking")
+                                                                {
+                                                                    control5.Text = "Nhận phòng";
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+
+                                                }
+                                            }                                            
+                                        }                                        
+                                        
                                     }
                                 }
                             }
@@ -265,8 +279,26 @@ namespace QLKS.Forms
                                         ReceivingRoom receivingRoom = new ReceivingRoom();
                                         receivingRoom.ReceivingDate = DateTime.Now;
                                         receivingRoom.BookingRoom = booking1.Id;
-                                        receivingRoom.Employee = 1;
-                                        db.AddRow<ReceivingRoom>(receivingRoom);
+                                        receivingRoom.Employee = FormLogin.account.Employee;
+                                        int kq = 0;
+                                        using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+                                        {
+                                            using (SqlCommand cmd = new SqlCommand("THEMPHIEUNHANPHONG", conn))
+                                            {
+                                                cmd.CommandType = CommandType.StoredProcedure;
+
+                                                // Thêm tham số vào StoredProcedure
+                                                cmd.Parameters.AddWithValue("@MAPHIEUDAT", receivingRoom.BookingRoom);
+                                                cmd.Parameters.AddWithValue("@MANV", receivingRoom.Employee);
+                                                conn.Open();
+                                                kq = cmd.ExecuteNonQuery();
+                                            }
+                                        }
+                                        if (kq == 0)
+                                        {
+                                            MessageBox.Show($"Thêm phiếu nhận phòng không thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            return;
+                                        }
                                     }
                                 }
                             }
