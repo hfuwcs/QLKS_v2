@@ -218,7 +218,25 @@ namespace QLKS
 
         private void btnSearchCustomer_Click(object sender, EventArgs e)
         {
-            Customer customer = db.GetTable<Customer>(t => t.UniqueNumber == txtCustomerId.Text).FirstOrDefault();
+            int makh=0;
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("TIM_KHACHHANG_MADD", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Thêm tham số vào StoredProcedure
+                    cmd.Parameters.AddWithValue("@MADD", txtCustomerId.Text);
+                    conn.Open();
+                    makh=Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+            if(makh==0)
+            {
+                MessageBox.Show("Không tìm thấy khách hàng này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }    
+            Customer customer = db.GetTable<Customer>(t => t.Id==makh).FirstOrDefault();
             if (customer == null)
             {
                 MessageBox.Show("Không tìm thấy khách hàng này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
