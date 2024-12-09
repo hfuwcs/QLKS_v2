@@ -8,6 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
+using System.Windows.Forms;
 
 namespace QLKS
 {
@@ -533,34 +534,67 @@ namespace QLKS
                 }
             }
         }
-        public DataSet ExecuteStoredProcedure(string procedureName, SqlParameter[] parameters)
+        //Phương thức gọi thủ tục từ database
+        public DataTable ExecuteStoredProcedure(string storedProcedureName, params SqlParameter[] parameters)
         {
-            SqlCommand cmd = new SqlCommand(procedureName, conn);
+            SqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = storedProcedureName;
 
             if (parameters != null)
             {
-                foreach (var param in parameters)
-                {
-                    cmd.Parameters.Add(param);
-                }
+                cmd.Parameters.AddRange(parameters);
             }
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataSet result = new DataSet();
-
+            DataTable dt = new DataTable();
             try
             {
-                Open();
-                adapter.Fill(result);
-                Close();
+                adapter.Fill(dt);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
             }
+            return dt;
+        }
+        public DataTable ExecuteQuery(string query, params SqlParameter[] parameters)
+        {
+            DataTable dataTable = new DataTable();
 
-            return result;
+            try
+            {
+                string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+
+                        if (parameters != null)
+                        {
+                            command.Parameters.AddRange(parameters);
+                        }
+
+
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            adapter.Fill(dataTable);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Lỗi khi thực hiện truy vấn: {ex.Message}");
+            }
+
+            return dataTable;
         }
     }
 }
