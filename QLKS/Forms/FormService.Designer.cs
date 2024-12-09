@@ -88,22 +88,22 @@
             this.tableLayoutPanel4.Controls.Add(this.btnSearch, 0, 2);
             this.tableLayoutPanel4.Controls.Add(this.txtSearch, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 23);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 27);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(348, 128);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(348, 124);
             this.tableLayoutPanel4.TabIndex = 4;
             // 
             // lblName
             // 
             this.lblName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(3, 5);
+            this.lblName.Location = new System.Drawing.Point(3, 2);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(342, 20);
+            this.lblName.Size = new System.Drawing.Size(342, 25);
             this.lblName.TabIndex = 3;
             this.lblName.Text = "Tên dịch vụ";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -117,7 +117,7 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
             this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSearch.Location = new System.Drawing.Point(3, 80);
+            this.btnSearch.Location = new System.Drawing.Point(3, 78);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(342, 38);
             this.btnSearch.TabIndex = 2;
@@ -129,9 +129,9 @@
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearch.Location = new System.Drawing.Point(3, 36);
+            this.txtSearch.Location = new System.Drawing.Point(3, 34);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(342, 27);
+            this.txtSearch.Size = new System.Drawing.Size(342, 31);
             this.txtSearch.TabIndex = 1;
             // 
             // label1
@@ -140,9 +140,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Green;
-            this.label1.Location = new System.Drawing.Point(3, 9);
+            this.label1.Location = new System.Drawing.Point(3, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(354, 32);
+            this.label1.Size = new System.Drawing.Size(354, 41);
             this.label1.TabIndex = 5;
             this.label1.Text = "QUẢN LÝ DỊCH VỤ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -172,7 +172,7 @@
             this.tableLayoutPanel3.Controls.Add(this.txtName, 0, 3);
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 23);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 27);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 7;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -182,16 +182,16 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(348, 262);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(348, 258);
             this.tableLayoutPanel3.TabIndex = 7;
             // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 5);
+            this.label4.Location = new System.Drawing.Point(3, 2);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(342, 20);
+            this.label4.Size = new System.Drawing.Size(342, 25);
             this.label4.TabIndex = 3;
             this.label4.Text = "Mã dịch vụ";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -200,18 +200,18 @@
             // 
             this.txtPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPrice.Location = new System.Drawing.Point(3, 176);
+            this.txtPrice.Location = new System.Drawing.Point(3, 174);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(342, 27);
+            this.txtPrice.Size = new System.Drawing.Size(342, 31);
             this.txtPrice.TabIndex = 5;
             // 
             // cboId
             // 
             this.cboId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboId.FormattingEnabled = true;
-            this.cboId.Location = new System.Drawing.Point(3, 39);
+            this.cboId.Location = new System.Drawing.Point(3, 38);
             this.cboId.Name = "cboId";
-            this.cboId.Size = new System.Drawing.Size(342, 27);
+            this.cboId.Size = new System.Drawing.Size(342, 33);
             this.cboId.TabIndex = 6;
             this.cboId.SelectedIndexChanged += new System.EventHandler(this.cboId_SelectedIndexChanged);
             // 
@@ -219,9 +219,9 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 145);
+            this.label5.Location = new System.Drawing.Point(3, 142);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(342, 20);
+            this.label5.Size = new System.Drawing.Size(342, 25);
             this.label5.TabIndex = 3;
             this.label5.Text = "Đơn giá";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -230,18 +230,18 @@
             // 
             this.txtName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtName.Location = new System.Drawing.Point(3, 106);
+            this.txtName.Location = new System.Drawing.Point(3, 104);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(342, 27);
+            this.txtName.Size = new System.Drawing.Size(342, 31);
             this.txtName.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 75);
+            this.label2.Location = new System.Drawing.Point(3, 72);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(342, 20);
+            this.label2.Size = new System.Drawing.Size(342, 25);
             this.label2.TabIndex = 3;
             this.label2.Text = "Tên dịch vụ";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -270,12 +270,12 @@
             this.tableLayoutPanel2.Controls.Add(this.btnUpdate, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.btnDelete, 2, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 23);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 27);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(348, 108);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(348, 104);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // btnAdd
@@ -287,7 +287,7 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(3, 8);
+            this.btnAdd.Location = new System.Drawing.Point(3, 7);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(163, 38);
             this.btnAdd.TabIndex = 2;
@@ -304,7 +304,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(3, 62);
+            this.btnCancel.Location = new System.Drawing.Point(3, 59);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(163, 38);
             this.btnCancel.TabIndex = 2;
@@ -321,7 +321,7 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Image = ((System.Drawing.Image)(resources.GetObject("btnUpdate.Image")));
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdate.Location = new System.Drawing.Point(182, 8);
+            this.btnUpdate.Location = new System.Drawing.Point(182, 7);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(163, 38);
             this.btnUpdate.TabIndex = 2;
@@ -338,7 +338,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(182, 62);
+            this.btnDelete.Location = new System.Drawing.Point(182, 59);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(163, 38);
             this.btnDelete.TabIndex = 2;
@@ -375,14 +375,14 @@
             this.ServiceName,
             this.Price});
             this.dtgvService.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtgvService.Location = new System.Drawing.Point(3, 23);
+            this.dtgvService.Location = new System.Drawing.Point(3, 27);
             this.dtgvService.MultiSelect = false;
             this.dtgvService.Name = "dtgvService";
             this.dtgvService.ReadOnly = true;
             this.dtgvService.RowHeadersWidth = 51;
             this.dtgvService.RowTemplate.Height = 24;
             this.dtgvService.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvService.Size = new System.Drawing.Size(607, 562);
+            this.dtgvService.Size = new System.Drawing.Size(607, 558);
             this.dtgvService.TabIndex = 0;
             this.dtgvService.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvService_CellClick);
             // 
@@ -393,7 +393,7 @@
             this.Id.MinimumWidth = 6;
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
-            this.Id.Width = 106;
+            this.Id.Width = 128;
             // 
             // ServiceName
             // 
@@ -402,7 +402,7 @@
             this.ServiceName.MinimumWidth = 6;
             this.ServiceName.Name = "ServiceName";
             this.ServiceName.ReadOnly = true;
-            this.ServiceName.Width = 108;
+            this.ServiceName.Width = 129;
             // 
             // Price
             // 
@@ -411,7 +411,7 @@
             this.Price.MinimumWidth = 6;
             this.Price.Name = "Price";
             this.Price.ReadOnly = true;
-            this.Price.Width = 87;
+            this.Price.Width = 104;
             // 
             // tableLayoutPanel1
             // 
@@ -436,7 +436,7 @@
             // 
             // FormService
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 644);
             this.Controls.Add(this.tableLayoutPanel1);

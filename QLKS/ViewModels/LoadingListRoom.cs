@@ -40,7 +40,8 @@ namespace QLKS.ViewModels
                 foreach (BookingRoomDetail booking in bookings)
                 {
                     BookingRoom booking1 = db.GetTable<BookingRoom>(p => p.Id == booking.BookingRoom).First();
-                    if (!(booking1.ExpectedDate <= start.Date || booking1.ArrivedDate >= end.Date))
+                    Invoice invoice = db.GetTable<Invoice>(p => p.BookingRoom == booking1.Id).FirstOrDefault();
+                    if (!(booking1.ExpectedDate <= start.Date || booking1.ArrivedDate >= end.Date) &&invoice==null)
                     {
                         bookingRoomDetail = booking;
                         break;
@@ -53,7 +54,8 @@ namespace QLKS.ViewModels
                 foreach (BookingRoomDetail booking in bookings)
                 {
                     BookingRoom booking1 = db.GetTable<BookingRoom>(p => p.Id == booking.BookingRoom).First();
-                    if (!(booking1.ExpectedDate <= start.Date || booking1.ArrivedDate >= end.Date))
+                    Invoice invoice = db.GetTable<Invoice>(p => p.BookingRoom == booking1.Id).FirstOrDefault();
+                    if (!(booking1.ExpectedDate <= start.Date || booking1.ArrivedDate >= end.Date) && invoice == null)
                     {
                         ReceivingRoom receiving = db.GetTable<ReceivingRoom>(p => p.BookingRoom == booking1.Id).FirstOrDefault();
                         if (receiving == null)

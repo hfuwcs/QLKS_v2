@@ -30,12 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainMenu));
             this.panel_SideBar = new System.Windows.Forms.Panel();
-            this.panel_Logo = new System.Windows.Forms.Panel();
-            this.panel_TitleBar = new System.Windows.Forms.Panel();
-            this.lbl_Title = new System.Windows.Forms.Label();
-            this.panelMain = new System.Windows.Forms.Panel();
-            this.btn_CloseChildForm = new System.Windows.Forms.Button();
-            this.btnBackup = new System.Windows.Forms.Button();
             this.btn_Task7 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btn_Task6 = new System.Windows.Forms.Button();
@@ -45,6 +39,12 @@
             this.btn_Task3 = new System.Windows.Forms.Button();
             this.btn_Task2 = new System.Windows.Forms.Button();
             this.btn_Task1 = new System.Windows.Forms.Button();
+            this.panel_Logo = new System.Windows.Forms.Panel();
+            this.panel_TitleBar = new System.Windows.Forms.Panel();
+            this.btn_CloseChildForm = new System.Windows.Forms.Button();
+            this.lbl_Title = new System.Windows.Forms.Label();
+            this.panelMain = new System.Windows.Forms.Panel();
+            this.btnBackup = new System.Windows.Forms.Button();
             this.panel_SideBar.SuspendLayout();
             this.panel_TitleBar.SuspendLayout();
             this.SuspendLayout();
@@ -68,83 +68,6 @@
             this.panel_SideBar.Name = "panel_SideBar";
             this.panel_SideBar.Size = new System.Drawing.Size(220, 801);
             this.panel_SideBar.TabIndex = 0;
-            // 
-            // panel_Logo
-            // 
-            this.panel_Logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.panel_Logo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_Logo.Location = new System.Drawing.Point(0, 0);
-            this.panel_Logo.Name = "panel_Logo";
-            this.panel_Logo.Size = new System.Drawing.Size(220, 80);
-            this.panel_Logo.TabIndex = 0;
-            // 
-            // panel_TitleBar
-            // 
-            this.panel_TitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.panel_TitleBar.Controls.Add(this.btn_CloseChildForm);
-            this.panel_TitleBar.Controls.Add(this.lbl_Title);
-            this.panel_TitleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_TitleBar.Location = new System.Drawing.Point(220, 0);
-            this.panel_TitleBar.Name = "panel_TitleBar";
-            this.panel_TitleBar.Size = new System.Drawing.Size(1130, 80);
-            this.panel_TitleBar.TabIndex = 1;
-            // 
-            // lbl_Title
-            // 
-            this.lbl_Title.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbl_Title.AutoSize = true;
-            this.lbl_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Title.ForeColor = System.Drawing.Color.White;
-            this.lbl_Title.Location = new System.Drawing.Point(432, 25);
-            this.lbl_Title.Name = "lbl_Title";
-            this.lbl_Title.Size = new System.Drawing.Size(347, 36);
-            this.lbl_Title.TabIndex = 0;
-            this.lbl_Title.Text = "QUẢN LÝ KHÁCH SẠN";
-            // 
-            // panelMain
-            // 
-            this.panelMain.AutoScroll = true;
-            this.panelMain.BackColor = System.Drawing.Color.White;
-            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.Location = new System.Drawing.Point(220, 80);
-            this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1130, 721);
-            this.panelMain.TabIndex = 2;
-            // 
-            // btn_CloseChildForm
-            // 
-            this.btn_CloseChildForm.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btn_CloseChildForm.FlatAppearance.BorderSize = 0;
-            this.btn_CloseChildForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_CloseChildForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_CloseChildForm.ForeColor = System.Drawing.Color.White;
-            this.btn_CloseChildForm.Image = ((System.Drawing.Image)(resources.GetObject("btn_CloseChildForm.Image")));
-            this.btn_CloseChildForm.Location = new System.Drawing.Point(0, 0);
-            this.btn_CloseChildForm.Name = "btn_CloseChildForm";
-            this.btn_CloseChildForm.Size = new System.Drawing.Size(66, 80);
-            this.btn_CloseChildForm.TabIndex = 1;
-            this.btn_CloseChildForm.UseVisualStyleBackColor = true;
-            this.btn_CloseChildForm.Visible = false;
-            this.btn_CloseChildForm.Click += new System.EventHandler(this.btn_CloseChildForm_Click);
-            // 
-            // btnBackup
-            // 
-            this.btnBackup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnBackup.FlatAppearance.BorderSize = 0;
-            this.btnBackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBackup.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnBackup.Image = global::QLKS.Properties.Resources.backup;
-            this.btnBackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBackup.Location = new System.Drawing.Point(0, 680);
-            this.btnBackup.Name = "btnBackup";
-            this.btnBackup.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnBackup.Size = new System.Drawing.Size(220, 75);
-            this.btnBackup.TabIndex = 10;
-            this.btnBackup.Text = "Sao lưu và phục hồi CSDL";
-            this.btnBackup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnBackup.UseVisualStyleBackColor = true;
-            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
             // 
             // btn_Task7
             // 
@@ -317,6 +240,83 @@
             this.btn_Task1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_Task1.UseVisualStyleBackColor = false;
             this.btn_Task1.Click += new System.EventHandler(this.btn_Task1_Click_1);
+            // 
+            // panel_Logo
+            // 
+            this.panel_Logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.panel_Logo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_Logo.Location = new System.Drawing.Point(0, 0);
+            this.panel_Logo.Name = "panel_Logo";
+            this.panel_Logo.Size = new System.Drawing.Size(220, 80);
+            this.panel_Logo.TabIndex = 0;
+            // 
+            // panel_TitleBar
+            // 
+            this.panel_TitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
+            this.panel_TitleBar.Controls.Add(this.btn_CloseChildForm);
+            this.panel_TitleBar.Controls.Add(this.lbl_Title);
+            this.panel_TitleBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_TitleBar.Location = new System.Drawing.Point(220, 0);
+            this.panel_TitleBar.Name = "panel_TitleBar";
+            this.panel_TitleBar.Size = new System.Drawing.Size(1130, 80);
+            this.panel_TitleBar.TabIndex = 1;
+            // 
+            // btn_CloseChildForm
+            // 
+            this.btn_CloseChildForm.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btn_CloseChildForm.FlatAppearance.BorderSize = 0;
+            this.btn_CloseChildForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_CloseChildForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_CloseChildForm.ForeColor = System.Drawing.Color.White;
+            this.btn_CloseChildForm.Image = ((System.Drawing.Image)(resources.GetObject("btn_CloseChildForm.Image")));
+            this.btn_CloseChildForm.Location = new System.Drawing.Point(0, 0);
+            this.btn_CloseChildForm.Name = "btn_CloseChildForm";
+            this.btn_CloseChildForm.Size = new System.Drawing.Size(66, 80);
+            this.btn_CloseChildForm.TabIndex = 1;
+            this.btn_CloseChildForm.UseVisualStyleBackColor = true;
+            this.btn_CloseChildForm.Visible = false;
+            this.btn_CloseChildForm.Click += new System.EventHandler(this.btn_CloseChildForm_Click);
+            // 
+            // lbl_Title
+            // 
+            this.lbl_Title.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_Title.AutoSize = true;
+            this.lbl_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Title.ForeColor = System.Drawing.Color.White;
+            this.lbl_Title.Location = new System.Drawing.Point(432, 25);
+            this.lbl_Title.Name = "lbl_Title";
+            this.lbl_Title.Size = new System.Drawing.Size(347, 36);
+            this.lbl_Title.TabIndex = 0;
+            this.lbl_Title.Text = "QUẢN LÝ KHÁCH SẠN";
+            // 
+            // panelMain
+            // 
+            this.panelMain.AutoScroll = true;
+            this.panelMain.BackColor = System.Drawing.Color.White;
+            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMain.Location = new System.Drawing.Point(220, 80);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(1130, 721);
+            this.panelMain.TabIndex = 2;
+            // 
+            // btnBackup
+            // 
+            this.btnBackup.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBackup.FlatAppearance.BorderSize = 0;
+            this.btnBackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackup.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBackup.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnBackup.Image = global::QLKS.Properties.Resources.backup;
+            this.btnBackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBackup.Location = new System.Drawing.Point(0, 680);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnBackup.Size = new System.Drawing.Size(220, 75);
+            this.btnBackup.TabIndex = 10;
+            this.btnBackup.Text = "Sao lưu và phục hồi CSDL";
+            this.btnBackup.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBackup.UseVisualStyleBackColor = true;
+            this.btnBackup.Click += new System.EventHandler(this.btnBackup_Click);
             // 
             // FormMainMenu
             // 
