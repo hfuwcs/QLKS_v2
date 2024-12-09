@@ -31,16 +31,16 @@ namespace QLKS.Forms
             }
         }
 
-        private void inHóaĐơnToolStripMenuItem_Click(object sender, System.EventArgs e)
-        {
-            if (selectedRowIndex >= 0)
-            {
-                if (MessageBox.Show("Bạn có muốn in hóa đơn này", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    FormPrint formPrint = new FormPrint(maHD);
-                    formPrint.ShowDialog();
-                }
-            }
-        }
+        //private void inHóaĐơnToolStripMenuItem_Click(object sender, System.EventArgs e)
+        //{
+        //    if (selectedRowIndex >= 0)
+        //    {
+        //        if (MessageBox.Show("Bạn có muốn in hóa đơn này", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+        //        {
+        //            FormPrint formPrint = new FormPrint(maHD);
+        //            formPrint.ShowDialog();
+        //        }
+        //    }
+        //}
     }
 }
