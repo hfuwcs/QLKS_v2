@@ -2,7 +2,9 @@
 using QLKS.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -320,46 +322,20 @@ namespace QLKS.Forms
         }
         string CheckRoomStatus(int roomId, DateTime dayStart, DateTime dayEnd)
         {
-            List<BookingRoom> bookings = db.GetTable<BookingRoom>(p => !(p.ExpectedDate <= dayStart.Date || p.ArrivedDate >= dayEnd.Date)).ToList();
-            foreach (BookingRoom booking in bookings)
+            string Status = String.Empty;
+            string sqlQuery = "SELECT dbo.KT_TINHTRANGPHONG(@RoomId, @DayStart,@DayEnd)";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                Invoice invoice = db.GetTable<Invoice>(p => p.BookingRoom == booking.Id).FirstOrDefault();
-                if (invoice != null)
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
                 {
-                    foreach (BookingRoomDetail room in db.GetTable<BookingRoomDetail>(p => p.BookingRoom == booking.Id))
-                    {
-                        if (roomId == room.Room)
-                        {
-                            return "Phòng trống";
-                        }
-                    }
-                }
-                else
-                {
-                    ReceivingRoom receiving = db.GetTable<ReceivingRoom>(p => p.BookingRoom == booking.Id).FirstOrDefault();
-                    if (receiving != null)
-                    {
-                        foreach (BookingRoomDetail room in db.GetTable<BookingRoomDetail>(p => p.BookingRoom == booking.Id))
-                        {
-                            if (roomId == room.Room)
-                            {
-                                return "Đã nhận";
-                            }
-                        }
-                    }
-                    else
-                    {
-                        foreach (BookingRoomDetail room in db.GetTable<BookingRoomDetail>(p => p.BookingRoom == booking.Id))
-                        {
-                            if (roomId == room.Room)
-                            {
-                                return "Đã đặt";
-                            }
-                        }
-                    }
+                    cmd.Parameters.AddWithValue("@RoomId", roomId);
+                    cmd.Parameters.AddWithValue("@DayStart", dayStart);
+                    cmd.Parameters.AddWithValue("@DayEnd", dayEnd);
+                    Status=(string)cmd.ExecuteScalar();
                 }
             }
-            return "Phòng trống";
+            return Status;
         }
         //async Task LoadListRoomAsync()
         //{
