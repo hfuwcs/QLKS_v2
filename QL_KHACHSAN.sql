@@ -251,6 +251,60 @@ JOIN DICHVU DV ON CTPDV.MADV = DV.MADV
 WHERE HD.MAHD = @MAHD
 GO
 
+----------Lập phiếu đặt phòng
+CREATE FUNCTION TinhTongTienDichVu(@MaPhieuDatPhong INT)
+RETURNS DECIMAL(18, 2)
+AS
+BEGIN
+    DECLARE @TotalPrice DECIMAL(18, 2) = 0;
+
+    -- Tính tổng tiền dịch vụ cho phiếu dịch vụ có cùng MaPhieuDatPhong
+    SELECT @TotalPrice = SUM(pdv.TONGTIEN)
+    FROM PHIEUDICHVU pdv
+    JOIN CHITIETPHIEUDV pdvD ON pdv.MAPHIEUDV = pdvD.MAPHIEUDV
+    WHERE pdv.MAPHIEUDATPHONG = @MaPhieuDatPhong;
+
+    -- Trả về tổng tiền dịch vụ
+    RETURN @TotalPrice;
+END
+GO
+
+
+CREATE TYPE dbo.DsDichVu AS TABLE
+(
+    MADV INT,
+    SOLUONG INT
+)
+GO
+
+CREATE PROCEDURE dbo.LapPhieuDichVu
+    @MaPhieuDatPhong INT, 
+    @MaNV INT,
+    @ServicesList dbo.DsDichVu READONLY
+AS
+BEGIN
+    DECLARE @TotalPrice DECIMAL(18, 2) = 0;
+
+    --Tính tổng tiền dịch vụ
+    SELECT @TotalPrice = SUM(s.DONGIA * sl.SOLUONG)
+    FROM @ServicesList sl
+    JOIN DICHVU s ON sl.MADV = s.MADV;
+
+    --Thêm vào bảng PHIEUDICHVU
+    INSERT INTO PHIEUDICHVU (MAPHIEUDATPHONG, NGAYLAP, TONGTIEN, MANV)
+    VALUES (@MaPhieuDatPhong, GETDATE(), @TotalPrice, @MaNV);
+
+    --Lấy MAPHIEUDV mới tạo ra
+    DECLARE @MAPHIEUDV INT = SCOPE_IDENTITY();
+
+    --Thêm các dịch vụ vào bảng CHITIETPHIEUDV
+    INSERT INTO CHITIETPHIEUDV (MAPHIEUDV, MADV, SOLUONG)
+    SELECT @MAPHIEUDV, MADV, SOLUONG FROM @ServicesList;
+
+    --Trả về MAPHIEUDV nếu cần
+    SELECT @MAPHIEUDV AS MAPHIEUDV;
+END
+GO
 -------------Đặt phòng
 CREATE FUNCTION KT_TINHTRANGPHONG( @MAPHONG INT, @NGAYDEN DATE, @NGAYDI DATE)
 RETURNS NVARCHAR(20)

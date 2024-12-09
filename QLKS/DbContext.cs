@@ -533,5 +533,34 @@ namespace QLKS
                 }
             }
         }
+        public DataSet ExecuteStoredProcedure(string procedureName, SqlParameter[] parameters)
+        {
+            SqlCommand cmd = new SqlCommand(procedureName, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            if (parameters != null)
+            {
+                foreach (var param in parameters)
+                {
+                    cmd.Parameters.Add(param);
+                }
+            }
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            DataSet result = new DataSet();
+
+            try
+            {
+                Open();
+                adapter.Fill(result);
+                Close();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+
+            return result;
+        }
     }
 }

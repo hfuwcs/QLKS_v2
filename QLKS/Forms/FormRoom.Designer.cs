@@ -59,11 +59,6 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.dtgvRoom = new System.Windows.Forms.DataGridView();
-            this.button9 = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +66,11 @@
             this.MaxPeople = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button9 = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -91,9 +91,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Green;
-            this.label1.Location = new System.Drawing.Point(3, 4);
+            this.label1.Location = new System.Drawing.Point(3, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(474, 41);
+            this.label1.Size = new System.Drawing.Size(474, 32);
             this.label1.TabIndex = 3;
             this.label1.Text = "QUẢN LÝ PHÒNG";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -120,21 +120,21 @@
             this.tableLayoutPanel5.Controls.Add(this.btnSearch, 2, 1);
             this.tableLayoutPanel5.Controls.Add(this.txtSearch, 0, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 27);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 23);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(462, 84);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(462, 88);
             this.tableLayoutPanel5.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 2);
+            this.label2.Location = new System.Drawing.Point(3, 5);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(266, 25);
+            this.label2.Size = new System.Drawing.Size(266, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Số phòng";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -148,7 +148,7 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
             this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSearch.Location = new System.Drawing.Point(285, 38);
+            this.btnSearch.Location = new System.Drawing.Point(285, 40);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(174, 38);
             this.btnSearch.TabIndex = 2;
@@ -160,9 +160,9 @@
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearch.Location = new System.Drawing.Point(3, 41);
+            this.txtSearch.Location = new System.Drawing.Point(3, 45);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(266, 31);
+            this.txtSearch.Size = new System.Drawing.Size(266, 27);
             this.txtSearch.TabIndex = 1;
             // 
             // groupBox2
@@ -173,7 +173,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.Green;
             this.groupBox2.Location = new System.Drawing.Point(3, 173);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(474, 441);
+            this.groupBox2.Size = new System.Drawing.Size(474, 433);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin phòng";
@@ -199,7 +199,7 @@
             this.tableLayoutPanel6.Controls.Add(this.txtTypeName, 0, 5);
             this.tableLayoutPanel6.Controls.Add(this.label7, 0, 6);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 27);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 23);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 9;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -211,16 +211,16 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(468, 411);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(468, 407);
             this.tableLayoutPanel6.TabIndex = 7;
             // 
             // label8
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 2);
+            this.label8.Location = new System.Drawing.Point(3, 5);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(223, 25);
+            this.label8.Size = new System.Drawing.Size(223, 20);
             this.label8.TabIndex = 5;
             this.label8.Text = "Mã phòng";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -229,19 +229,19 @@
             // 
             this.txtMaxPeople.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtMaxPeople.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMaxPeople.Location = new System.Drawing.Point(242, 174);
+            this.txtMaxPeople.Location = new System.Drawing.Point(242, 176);
             this.txtMaxPeople.Name = "txtMaxPeople";
             this.txtMaxPeople.ReadOnly = true;
-            this.txtMaxPeople.Size = new System.Drawing.Size(223, 31);
+            this.txtMaxPeople.Size = new System.Drawing.Size(223, 27);
             this.txtMaxPeople.TabIndex = 1;
             // 
             // lblMaxPeople
             // 
             this.lblMaxPeople.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMaxPeople.AutoSize = true;
-            this.lblMaxPeople.Location = new System.Drawing.Point(242, 142);
+            this.lblMaxPeople.Location = new System.Drawing.Point(242, 145);
             this.lblMaxPeople.Name = "lblMaxPeople";
-            this.lblMaxPeople.Size = new System.Drawing.Size(223, 25);
+            this.lblMaxPeople.Size = new System.Drawing.Size(223, 20);
             this.lblMaxPeople.TabIndex = 3;
             this.lblMaxPeople.Text = "Số người tối đa";
             this.lblMaxPeople.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -251,9 +251,9 @@
             this.cboTypeId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboTypeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTypeId.FormattingEnabled = true;
-            this.cboTypeId.Location = new System.Drawing.Point(242, 33);
+            this.cboTypeId.Location = new System.Drawing.Point(242, 39);
             this.cboTypeId.Name = "cboTypeId";
-            this.cboTypeId.Size = new System.Drawing.Size(223, 33);
+            this.cboTypeId.Size = new System.Drawing.Size(223, 27);
             this.cboTypeId.TabIndex = 4;
             this.cboTypeId.SelectedIndexChanged += new System.EventHandler(this.cboTypeId_SelectedIndexChanged);
             // 
@@ -261,9 +261,9 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(242, 72);
+            this.label6.Location = new System.Drawing.Point(242, 75);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(223, 25);
+            this.label6.Size = new System.Drawing.Size(223, 20);
             this.label6.TabIndex = 3;
             this.label6.Text = "Giá phòng";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -272,10 +272,10 @@
             // 
             this.txtPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPrice.Location = new System.Drawing.Point(242, 104);
+            this.txtPrice.Location = new System.Drawing.Point(242, 106);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.ReadOnly = true;
-            this.txtPrice.Size = new System.Drawing.Size(223, 31);
+            this.txtPrice.Size = new System.Drawing.Size(223, 27);
             this.txtPrice.TabIndex = 1;
             // 
             // cboStatus
@@ -287,9 +287,9 @@
             "Phòng trống",
             "Đã đặt",
             "Đã nhận"});
-            this.cboStatus.Location = new System.Drawing.Point(3, 243);
+            this.cboStatus.Location = new System.Drawing.Point(3, 249);
             this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(223, 33);
+            this.cboStatus.Size = new System.Drawing.Size(223, 27);
             this.cboStatus.TabIndex = 4;
             // 
             // cboRoomId
@@ -297,9 +297,9 @@
             this.cboRoomId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cboRoomId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboRoomId.FormattingEnabled = true;
-            this.cboRoomId.Location = new System.Drawing.Point(3, 33);
+            this.cboRoomId.Location = new System.Drawing.Point(3, 39);
             this.cboRoomId.Name = "cboRoomId";
-            this.cboRoomId.Size = new System.Drawing.Size(223, 33);
+            this.cboRoomId.Size = new System.Drawing.Size(223, 27);
             this.cboRoomId.TabIndex = 6;
             this.cboRoomId.SelectedIndexChanged += new System.EventHandler(this.cboRoomId_SelectedIndexChanged);
             // 
@@ -307,9 +307,9 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 72);
+            this.label3.Location = new System.Drawing.Point(3, 75);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(223, 25);
+            this.label3.Size = new System.Drawing.Size(223, 20);
             this.label3.TabIndex = 3;
             this.label3.Text = "Số phòng";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -318,9 +318,9 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(242, 2);
+            this.label4.Location = new System.Drawing.Point(242, 5);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(223, 25);
+            this.label4.Size = new System.Drawing.Size(223, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "Mã loại phòng";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -329,18 +329,18 @@
             // 
             this.txtNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNumber.Location = new System.Drawing.Point(3, 104);
+            this.txtNumber.Location = new System.Drawing.Point(3, 106);
             this.txtNumber.Name = "txtNumber";
-            this.txtNumber.Size = new System.Drawing.Size(223, 31);
+            this.txtNumber.Size = new System.Drawing.Size(223, 27);
             this.txtNumber.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 142);
+            this.label5.Location = new System.Drawing.Point(3, 145);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(223, 25);
+            this.label5.Size = new System.Drawing.Size(223, 20);
             this.label5.TabIndex = 3;
             this.label5.Text = "Tên loại phòng";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -349,19 +349,19 @@
             // 
             this.txtTypeName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTypeName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTypeName.Location = new System.Drawing.Point(3, 174);
+            this.txtTypeName.Location = new System.Drawing.Point(3, 176);
             this.txtTypeName.Name = "txtTypeName";
             this.txtTypeName.ReadOnly = true;
-            this.txtTypeName.Size = new System.Drawing.Size(223, 31);
+            this.txtTypeName.Size = new System.Drawing.Size(223, 27);
             this.txtTypeName.TabIndex = 1;
             // 
             // label7
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 212);
+            this.label7.Location = new System.Drawing.Point(3, 215);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(223, 25);
+            this.label7.Size = new System.Drawing.Size(223, 20);
             this.label7.TabIndex = 3;
             this.label7.Text = "Trạng thái";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -390,12 +390,12 @@
             this.tableLayoutPanel4.Controls.Add(this.btnAdd, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.btnUpdate, 2, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 27);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 23);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(248, 98);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(248, 102);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
             // btnCancel
@@ -405,7 +405,7 @@
             this.btnCancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnCancel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(3, 5);
+            this.btnCancel.Location = new System.Drawing.Point(3, 6);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(113, 38);
             this.btnCancel.TabIndex = 3;
@@ -420,7 +420,7 @@
             this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Location = new System.Drawing.Point(132, 5);
+            this.btnDelete.Location = new System.Drawing.Point(132, 6);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(113, 38);
             this.btnDelete.TabIndex = 4;
@@ -435,7 +435,7 @@
             this.btnAdd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.btnAdd.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Location = new System.Drawing.Point(3, 54);
+            this.btnAdd.Location = new System.Drawing.Point(3, 57);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(113, 38);
             this.btnAdd.TabIndex = 5;
@@ -451,7 +451,7 @@
             this.btnUpdate.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ActiveBorder;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUpdate.Location = new System.Drawing.Point(132, 54);
+            this.btnUpdate.Location = new System.Drawing.Point(132, 57);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(113, 38);
             this.btnUpdate.TabIndex = 6;
@@ -468,7 +468,7 @@
             this.groupBox5.Location = new System.Drawing.Point(483, 53);
             this.groupBox5.Name = "groupBox5";
             this.tableLayoutPanel1.SetRowSpan(this.groupBox5, 3);
-            this.groupBox5.Size = new System.Drawing.Size(652, 701);
+            this.groupBox5.Size = new System.Drawing.Size(652, 693);
             this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Danh sách phòng";
@@ -492,15 +492,79 @@
             this.TypeId,
             this.Type});
             this.dtgvRoom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtgvRoom.Location = new System.Drawing.Point(3, 27);
+            this.dtgvRoom.Location = new System.Drawing.Point(3, 23);
             this.dtgvRoom.Name = "dtgvRoom";
             this.dtgvRoom.ReadOnly = true;
             this.dtgvRoom.RowHeadersWidth = 51;
             this.dtgvRoom.RowTemplate.Height = 24;
             this.dtgvRoom.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgvRoom.Size = new System.Drawing.Size(646, 671);
+            this.dtgvRoom.Size = new System.Drawing.Size(646, 667);
             this.dtgvRoom.TabIndex = 0;
             this.dtgvRoom.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgvRoom_CellClick);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Mã phòng";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            this.Id.Width = 124;
+            // 
+            // Number
+            // 
+            this.Number.DataPropertyName = "Number";
+            this.Number.HeaderText = "Số phòng";
+            this.Number.MinimumWidth = 6;
+            this.Number.Name = "Number";
+            this.Number.ReadOnly = true;
+            this.Number.Width = 98;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Trạng thái";
+            this.Status.MinimumWidth = 6;
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "Giá phòng";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            this.Price.Width = 103;
+            // 
+            // MaxPeople
+            // 
+            this.MaxPeople.DataPropertyName = "MaxPeople";
+            this.MaxPeople.HeaderText = "Số lượng người";
+            this.MaxPeople.MinimumWidth = 6;
+            this.MaxPeople.Name = "MaxPeople";
+            this.MaxPeople.ReadOnly = true;
+            this.MaxPeople.Width = 137;
+            // 
+            // TypeId
+            // 
+            this.TypeId.DataPropertyName = "TypeId";
+            this.TypeId.HeaderText = "Mã loại phòng";
+            this.TypeId.MinimumWidth = 6;
+            this.TypeId.Name = "TypeId";
+            this.TypeId.ReadOnly = true;
+            this.TypeId.Visible = false;
+            this.TypeId.Width = 157;
+            // 
+            // Type
+            // 
+            this.Type.DataPropertyName = "Type";
+            this.Type.HeaderText = "Tên loại phòng";
+            this.Type.MinimumWidth = 6;
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            this.Type.Width = 133;
             // 
             // button9
             // 
@@ -511,7 +575,7 @@
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Image = ((System.Drawing.Image)(resources.GetObject("button9.Image")));
             this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(3, 30);
+            this.button9.Location = new System.Drawing.Point(3, 32);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(196, 38);
             this.button9.TabIndex = 2;
@@ -539,12 +603,12 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Controls.Add(this.button9, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 27);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 23);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 98F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(202, 98);
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 102F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(202, 102);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // tableLayoutPanel1
@@ -565,7 +629,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1138, 757);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1138, 749);
             this.tableLayoutPanel1.TabIndex = 8;
             // 
             // tableLayoutPanel2
@@ -576,83 +640,18 @@
             this.tableLayoutPanel2.Controls.Add(this.groupBox4, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.groupBox3, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 620);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 612);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(474, 134);
             this.tableLayoutPanel2.TabIndex = 8;
             // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Mã phòng";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            this.Id.Width = 124;
-            // 
-            // Number
-            // 
-            this.Number.DataPropertyName = "Number";
-            this.Number.HeaderText = "Số phòng";
-            this.Number.MinimumWidth = 6;
-            this.Number.Name = "Number";
-            this.Number.ReadOnly = true;
-            this.Number.Width = 120;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Trạng thái";
-            this.Status.MinimumWidth = 6;
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            this.Status.Width = 118;
-            // 
-            // Price
-            // 
-            this.Price.DataPropertyName = "Price";
-            this.Price.HeaderText = "Giá phòng";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            this.Price.Width = 124;
-            // 
-            // MaxPeople
-            // 
-            this.MaxPeople.DataPropertyName = "MaxPeople";
-            this.MaxPeople.HeaderText = "Số lượng người";
-            this.MaxPeople.MinimumWidth = 6;
-            this.MaxPeople.Name = "MaxPeople";
-            this.MaxPeople.ReadOnly = true;
-            this.MaxPeople.Width = 166;
-            // 
-            // TypeId
-            // 
-            this.TypeId.DataPropertyName = "TypeId";
-            this.TypeId.HeaderText = "Mã loại phòng";
-            this.TypeId.MinimumWidth = 6;
-            this.TypeId.Name = "TypeId";
-            this.TypeId.ReadOnly = true;
-            this.TypeId.Visible = false;
-            this.TypeId.Width = 157;
-            // 
-            // Type
-            // 
-            this.Type.DataPropertyName = "Type";
-            this.Type.HeaderText = "Tên loại phòng";
-            this.Type.MinimumWidth = 6;
-            this.Type.Name = "Type";
-            this.Type.ReadOnly = true;
-            this.Type.Width = 158;
-            // 
             // FormRoom
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1138, 757);
+            this.ClientSize = new System.Drawing.Size(1138, 749);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FormRoom";

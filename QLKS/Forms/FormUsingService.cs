@@ -1,6 +1,8 @@
 ﻿using QLKS.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -114,59 +116,131 @@ namespace QLKS.Forms
             dtgvListService.Rows.Add(cboServiceName.Text, nmQuantity.Value, txtPrice.Text, $"{double.Parse(nmQuantity.Value.ToString()) * double.Parse(txtPrice.Text)}");
         }
 
+        //private void button2_Click(object sender, EventArgs e)
+        //{
+        //    if (dtgvBooking.SelectedRows.Count == 0)
+        //    {
+        //        MessageBox.Show("Vui lòng chọn phiếu đặt phòng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        return;
+        //    }
+
+        //    if (dtgvListService.Rows.Count == 0)
+        //    {
+        //        MessageBox.Show("Vui lòng chọn dịch vụ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        return;
+        //    }
+
+        //    BookingService bookingService = new BookingService();
+        //    bookingService.TotalPrice = 0;
+        //    bookingService.Employee = FormLogin.account.Employee;
+        //    bookingService.BookingDate = DateTime.Now;
+        //    if (MessageBox.Show("Tiến hành lập phiếu dịch vụ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+        //    {
+        //        if (dtgvBooking.SelectedRows[0].Cells[0].Value != null)
+        //        {
+        //            bookingService.BookingRoom = int.Parse(dtgvBooking.SelectedRows[0].Cells[0].Value.ToString());
+        //        }
+        //        bookingService = db.AddRow<BookingService>(bookingService);
+        //        foreach (DataGridViewRow row in dtgvListService.Rows)
+        //        {
+        //            foreach (DataGridViewCell cell in row.Cells)
+        //            {
+        //                if (cell.ColumnIndex == 0 && cell.Value != null)
+        //                {
+        //                    Service service = db.GetTable<Service>(s => s.Name == cell.Value.ToString()).FirstOrDefault();
+        //                    BookingServiceDetail detail = new BookingServiceDetail();
+        //                    detail.Service = service.Id;
+        //                    detail.Quantity = int.Parse(row.Cells[1].Value.ToString());
+        //                    detail.BookingService = bookingService.Id;
+        //                    detail = db.AddRow<BookingServiceDetail>(detail);
+        //                    if (detail == null)
+        //                    {
+        //                        MessageBox.Show($"Thêm dịch vụ {service.Name} không thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //                        return;
+        //                    }
+        //                    string result = Regex.Match(service.Price.ToString(), "^\\d+").Value;
+        //                    bookingService.TotalPrice += int.Parse(result) * detail.Quantity;
+        //                    db.UpdateRow<BookingService>(bookingService);
+        //                }
+        //            }
+        //        }
+        //        MessageBox.Show("Lập phiếu dịch vụ thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        dtgvListService.Rows.Clear();
+        //        dtgvInvoiceService.Rows.Clear();
+        //    }
+
+        //}
+
         private void button2_Click(object sender, EventArgs e)
         {
-            if (dtgvBooking.SelectedRows.Count == 0)
+            if (dtgvListService.Rows.Count > 0)
             {
-                MessageBox.Show("Vui lòng chọn phiếu đặt phòng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            if (dtgvListService.Rows.Count == 0)
-            {
-                MessageBox.Show("Vui lòng chọn dịch vụ!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            BookingService bookingService = new BookingService();
-            bookingService.TotalPrice = 0;
-            bookingService.Employee = FormLogin.account.Employee;
-            bookingService.BookingDate = DateTime.Now;
-            if (MessageBox.Show("Tiến hành lập phiếu dịch vụ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                if (dtgvBooking.SelectedRows[0].Cells[0].Value != null)
+                if (MessageBox.Show("Tiến hành lập phiếu dịch vụ?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    bookingService.BookingRoom = int.Parse(dtgvBooking.SelectedRows[0].Cells[0].Value.ToString());
-                }
-                bookingService = db.AddRow<BookingService>(bookingService);
-                foreach (DataGridViewRow row in dtgvListService.Rows)
-                {
-                    foreach (DataGridViewCell cell in row.Cells)
+                    if (dtgvBooking.SelectedRows.Count > 0)
                     {
-                        if (cell.ColumnIndex == 0 && cell.Value != null)
+                        int maphieudat = int.Parse(dtgvBooking.SelectedRows[0].Cells[0].Value.ToString());
+
+                        int employeeId = FormLogin.account.Employee;
+
+                        DataTable serviceTable = new DataTable();
+                        serviceTable.Columns.Add("MADV", typeof(int));
+                        serviceTable.Columns.Add("SOLUONG", typeof(int));
+
+                        foreach (DataGridViewRow row in dtgvListService.Rows)
                         {
-                            Service service = db.GetTable<Service>(s => s.Name == cell.Value.ToString()).FirstOrDefault();
-                            BookingServiceDetail detail = new BookingServiceDetail();
-                            detail.Service = service.Id;
-                            detail.Quantity = int.Parse(row.Cells[1].Value.ToString());
-                            detail.BookingService = bookingService.Id;
-                            detail = db.AddRow<BookingServiceDetail>(detail);
-                            if (detail == null)
+                            string serviceName = row.Cells["Column3"].Value?.ToString();
+
+                            if (!string.IsNullOrEmpty(serviceName))
                             {
-                                MessageBox.Show($"Thêm dịch vụ {service.Name} không thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                return;
+                                Service service = db.GetTable<Service>(s => s.Name == serviceName).FirstOrDefault();
+                                if (service != null)
+                                {
+                                    serviceTable.Rows.Add(service.Id, row.Cells["Column4"].Value);
+                                }
                             }
-                            string result = Regex.Match(service.Price.ToString(), "^\\d+").Value;
-                            bookingService.TotalPrice += int.Parse(result) * detail.Quantity;
-                            db.UpdateRow<BookingService>(bookingService);
+                        }
+
+                        SqlParameter paramMAPHIEUDAT = new SqlParameter("@MaPhieuDatPhong", SqlDbType.Int);
+                        paramMAPHIEUDAT.Value = maphieudat;
+
+                        SqlParameter paramEmployeeId = new SqlParameter("@MaNV", SqlDbType.Int);
+                        paramEmployeeId.Value = employeeId;
+
+                        SqlParameter paramServices = new SqlParameter("@ServicesList", SqlDbType.Structured);
+                        paramServices.TypeName = "dbo.DsDichVu"; 
+                        paramServices.Value = serviceTable;
+
+                        SqlParameter[] parameters = new SqlParameter[]
+                        {
+                            paramMAPHIEUDAT,
+                            paramEmployeeId,
+                            paramServices
+                        };
+
+                        DbContext dbContext = new DbContext(DbContext.ConnectionType.ConfigurationManager, "DefaultConnection");
+                        DataSet result = dbContext.ExecuteStoredProcedure("dbo.LapPhieuDichVu", parameters);
+
+                        if (result != null && result.Tables.Count > 0)
+                        {
+                            MessageBox.Show("Lập phiếu dịch vụ thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            dtgvListService.Rows.Clear();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Lập phiếu dịch vụ thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
+                    else
+                    {
+                        MessageBox.Show("Chưa chọn phiếu đặt phòng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
-                MessageBox.Show("Lập phiếu dịch vụ thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dtgvListService.Rows.Clear();
-                dtgvInvoiceService.Rows.Clear();
             }
-
+            else
+            {
+                MessageBox.Show("Chưa có dịch vụ nào được chọn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
         public decimal TinhTienPhong(int maphieudat)
         {
@@ -182,14 +256,26 @@ namespace QLKS.Forms
             }
             return tien;
         }
+        //public decimal TinhTienDichVu(int maphieudat)
+        //{
+        //    decimal tien = 0;
+        //    List<BookingService> services = db.GetTable<BookingService>(b => b.BookingRoom == maphieudat).ToList();
+        //    foreach (BookingService service in services)
+        //    {
+        //        tien += service.TotalPrice;
+        //    }
+        //    return tien;
+        //}
         public decimal TinhTienDichVu(int maphieudat)
         {
             decimal tien = 0;
-            List<BookingService> services = db.GetTable<BookingService>(b => b.BookingRoom == maphieudat).ToList();
-            foreach (BookingService service in services)
+            string query = $"SELECT dbo.TinhTongTienDichVu({maphieudat})";
+            object result = db.ExecuteScalar(query);
+            if (result != null)
             {
-                tien += service.TotalPrice;
+                tien = Convert.ToDecimal(result);
             }
+
             return tien;
         }
 
